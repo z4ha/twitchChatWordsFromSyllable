@@ -15,6 +15,10 @@ io.on('connection', function(socket){
     text = text + msg;
     console.log('text => ',text);
     console.log('msg => ',msg);
+    if (text.length >= 7) {
+      io.emit('result', text);
+      text = '';
+      }
     }
     if (msg === "stop") {
       io.emit('result', text);

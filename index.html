@@ -13,7 +13,7 @@
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
       #messages { margin-bottom: 40px }
-      #results { position: absolute; left: 70%; top: 0;}
+      #results { position: fixed; left: 70%; top: 0;}
       #results { list-style-type: none; margin: 0; padding: 0; }
       #results li { padding: 5px 10px; }
       #results li:nth-child(odd) { background: #eee; }
@@ -44,7 +44,9 @@
           window.scrollTo(0, document.body.scrollHeight);
         });
         socket.on('result', function(msg){
-          $('#results').append($('<li>').text(msg));
+          if (msg != '') {
+            $('#results').append($('<li>').text(msg));
+          }
         });
       });
     </script>
