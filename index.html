@@ -8,14 +8,24 @@
       form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
       form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
       form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+      #messages { width: 70%; }
       #messages { list-style-type: none; margin: 0; padding: 0; }
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
       #messages { margin-bottom: 40px }
+      #results { position: absolute; left: 70%; top: 0;}
+      #results { list-style-type: none; margin: 0; padding: 0; }
+      #results li { padding: 5px 10px; }
+      #results li:nth-child(odd) { background: #eee; }
+      #results { width: 30%; }
+      #results { margin-bottom: 40px }
+      #results { border-left: 2px solid black;}
+
     </style>
   </head>
   <body>
     <ul id="messages"></ul>
+    <ul id="results"></ul>
     <form action="">
       <input id="m" autocomplete="off" /><button>Send</button>
     </form>
@@ -32,6 +42,9 @@
         socket.on('chat message', function(msg){
           $('#messages').append($('<li>').text(msg));
           window.scrollTo(0, document.body.scrollHeight);
+        });
+        socket.on('result', function(msg){
+          $('#results').append($('<li>').text(msg));
         });
       });
     </script>
