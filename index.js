@@ -12,7 +12,7 @@ io.on('connection', function(socket){
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
     if (msg != 'stop' && msg.length <= 2) {
-    text = text + msg
+    text = text + msg;
     console.log('text => ',text);
     console.log('msg => ',msg);
     }
